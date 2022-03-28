@@ -22,4 +22,5 @@
     "server.h": "c",
     "net.h": "c"
   },
+  "editor.detectIndentation": false,
 }
