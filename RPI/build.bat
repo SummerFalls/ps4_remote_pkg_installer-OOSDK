@@ -2,10 +2,10 @@ SETLOCAL EnableDelayedExpansion
 
 Rem Package information
 set PKG_TITLE="RPI"
-set PKG_VERSION="01.02"
+set PKG_VERSION="1.03"
 set PKG_ASSETS="assets"
-set PKG_TITLE_ID="KPBR01111"
-set PKG_CONTENT_ID="IV0000-KPBR01111_00-AAAAAAAAAAAAAAAA"
+set PKG_TITLE_ID="DAVE00028"
+set PKG_CONTENT_ID="IV0000-DAVE00028_00-RPI0000000000000"
 
 Rem Libraries to link in
 set libraries=-lc -lkernel -lc++ -lSceUserService -lSceSystemService -lSceNet -lSceHttp -lSceBgft -lSceAppInstUtil -lSceSsl -lSceSysmodule -lSceNetCtl -lSceJson -lSceNpUtility -lSceNpCommon
