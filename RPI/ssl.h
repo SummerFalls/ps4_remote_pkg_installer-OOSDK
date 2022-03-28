@@ -3,13 +3,14 @@
 
 #include <stdint.h>
 
-#ifdef __cplusplus 
+#ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef struct SslPem {
-	char *ptr;
-	size_t size;
+typedef struct SslPem
+{
+    char  *ptr;
+    size_t size;
 } SslPem;
 
 // Empty Comment
@@ -285,7 +286,7 @@ void sceSslGetSslError();
 // Empty Comment
 void sceSslGetSubjectName();
 // Empty Comment
-int sceSslInit(size_t poolSize);
+int  sceSslInit(size_t poolSize);
 // Empty Comment
 void sceSslLoadCert();
 // Empty Comment
@@ -301,7 +302,7 @@ void sceSslSetVerifyCallback();
 // Empty Comment
 void sceSslShowMemoryStat();
 // TODO: pr
-int sceSslTerm();
+int  sceSslTerm();
 // Empty Comment
 void sceSslUnloadCert();
 // Empty Comment

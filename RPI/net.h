@@ -1,364 +1,363 @@
 #pragma once
 
 #include "common.h"
-
 #include <orbis/_types/net.h>
 
 // Empty Comment
-OrbisNetId sceNetAccept(OrbisNetId, OrbisNetSockaddr*, OrbisNetSocklen_t*);
+OrbisNetId sceNetAccept(OrbisNetId, OrbisNetSockaddr *, OrbisNetSocklen_t *);
 // Empty Comment
-void sceNetAllocateAllRouteInfo();
+void       sceNetAllocateAllRouteInfo();
 // Empty Comment
-void sceNetBandwidthControlGetDefaultParam();
+void       sceNetBandwidthControlGetDefaultParam();
 // Empty Comment
-void sceNetBandwidthControlGetIfParam();
+void       sceNetBandwidthControlGetIfParam();
 // Empty Comment
-void sceNetBandwidthControlGetPolicy();
+void       sceNetBandwidthControlGetPolicy();
 // Empty Comment
-void sceNetBandwidthControlSetDefaultParam();
+void       sceNetBandwidthControlSetDefaultParam();
 // Empty Comment
-void sceNetBandwidthControlSetIfParam();
+void       sceNetBandwidthControlSetIfParam();
 // Empty Comment
-void sceNetBandwidthControlSetPolicy();
+void       sceNetBandwidthControlSetPolicy();
 // Empty Comment
-int sceNetBind(OrbisNetId, const OrbisNetSockaddr*, OrbisNetSocklen_t);
+int        sceNetBind(OrbisNetId, const OrbisNetSockaddr *, OrbisNetSocklen_t);
 // Empty Comment
-void sceNetClearDnsCache();
+void       sceNetClearDnsCache();
 // Empty Comment
-void sceNetConfigAddArp();
+void       sceNetConfigAddArp();
 // Empty Comment
-void sceNetConfigAddIfaddr();
+void       sceNetConfigAddIfaddr();
 // Empty Comment
-void sceNetConfigAddMRoute();
+void       sceNetConfigAddMRoute();
 // Empty Comment
-void sceNetConfigAddRoute();
+void       sceNetConfigAddRoute();
 // Empty Comment
-void sceNetConfigAddRoute6();
+void       sceNetConfigAddRoute6();
 // Empty Comment
-void sceNetConfigCleanUpAllInterfaces();
+void       sceNetConfigCleanUpAllInterfaces();
 // Empty Comment
-void sceNetConfigDelArp();
+void       sceNetConfigDelArp();
 // Empty Comment
-void sceNetConfigDelDefaultRoute();
+void       sceNetConfigDelDefaultRoute();
 // Empty Comment
-void sceNetConfigDelDefaultRoute6();
+void       sceNetConfigDelDefaultRoute6();
 // Empty Comment
-void sceNetConfigDelIfaddr();
+void       sceNetConfigDelIfaddr();
 // Empty Comment
-void sceNetConfigDelIfaddr6();
+void       sceNetConfigDelIfaddr6();
 // Empty Comment
-void sceNetConfigDelMRoute();
+void       sceNetConfigDelMRoute();
 // Empty Comment
-void sceNetConfigDelRoute();
+void       sceNetConfigDelRoute();
 // Empty Comment
-void sceNetConfigDelRoute6();
+void       sceNetConfigDelRoute6();
 // Empty Comment
-void sceNetConfigDownInterface();
+void       sceNetConfigDownInterface();
 // Empty Comment
-void sceNetConfigEtherGetLinkMode();
+void       sceNetConfigEtherGetLinkMode();
 // Empty Comment
-void sceNetConfigEtherPostPlugInOutEvent();
+void       sceNetConfigEtherPostPlugInOutEvent();
 // Empty Comment
-void sceNetConfigEtherSetLinkMode();
+void       sceNetConfigEtherSetLinkMode();
 // Empty Comment
-void sceNetConfigFlushRoute();
+void       sceNetConfigFlushRoute();
 // Empty Comment
-void sceNetConfigGetDefaultRoute();
+void       sceNetConfigGetDefaultRoute();
 // Empty Comment
-void sceNetConfigGetDefaultRoute6();
+void       sceNetConfigGetDefaultRoute6();
 // Empty Comment
-void sceNetConfigGetIfaddr();
+void       sceNetConfigGetIfaddr();
 // Empty Comment
-void sceNetConfigGetIfaddr6();
+void       sceNetConfigGetIfaddr6();
 // Empty Comment
-void sceNetConfigRoutingShowRoutingConfig();
+void       sceNetConfigRoutingShowRoutingConfig();
 // Empty Comment
-void sceNetConfigRoutingShowtCtlVar();
+void       sceNetConfigRoutingShowtCtlVar();
 // Empty Comment
-void sceNetConfigRoutingStart();
+void       sceNetConfigRoutingStart();
 // Empty Comment
-void sceNetConfigRoutingStop();
+void       sceNetConfigRoutingStop();
 // Empty Comment
-void sceNetConfigSetDefaultRoute();
+void       sceNetConfigSetDefaultRoute();
 // Empty Comment
-void sceNetConfigSetDefaultRoute6();
+void       sceNetConfigSetDefaultRoute6();
 // Empty Comment
-void sceNetConfigSetDefaultScope();
+void       sceNetConfigSetDefaultScope();
 // Empty Comment
-void sceNetConfigSetIfaddr();
+void       sceNetConfigSetIfaddr();
 // Empty Comment
-void sceNetConfigSetIfaddr6();
+void       sceNetConfigSetIfaddr6();
 // Empty Comment
-void sceNetConfigSetIfmtu();
+void       sceNetConfigSetIfmtu();
 // Empty Comment
-void sceNetConfigUpInterface();
+void       sceNetConfigUpInterface();
 // Empty Comment
-void sceNetConfigWlanAdhocClearWakeOnWlan();
+void       sceNetConfigWlanAdhocClearWakeOnWlan();
 // Empty Comment
-void sceNetConfigWlanAdhocCreate();
+void       sceNetConfigWlanAdhocCreate();
 // Empty Comment
-void sceNetConfigWlanAdhocGetWakeOnWlanInfo();
+void       sceNetConfigWlanAdhocGetWakeOnWlanInfo();
 // Empty Comment
-void sceNetConfigWlanAdhocJoin();
+void       sceNetConfigWlanAdhocJoin();
 // Empty Comment
-void sceNetConfigWlanAdhocLeave();
+void       sceNetConfigWlanAdhocLeave();
 // Empty Comment
-void sceNetConfigWlanAdhocPspEmuClearWakeOnWlan();
+void       sceNetConfigWlanAdhocPspEmuClearWakeOnWlan();
 // Empty Comment
-void sceNetConfigWlanAdhocPspEmuGetWakeOnWlanInfo();
+void       sceNetConfigWlanAdhocPspEmuGetWakeOnWlanInfo();
 // Empty Comment
-void sceNetConfigWlanAdhocPspEmuSetWakeOnWlan();
+void       sceNetConfigWlanAdhocPspEmuSetWakeOnWlan();
 // Empty Comment
-void sceNetConfigWlanAdhocScanJoin();
+void       sceNetConfigWlanAdhocScanJoin();
 // Empty Comment
-void sceNetConfigWlanAdhocSetExtInfoElement();
+void       sceNetConfigWlanAdhocSetExtInfoElement();
 // Empty Comment
-void sceNetConfigWlanAdhocSetWakeOnWlan();
+void       sceNetConfigWlanAdhocSetWakeOnWlan();
 // Empty Comment
-void sceNetConfigWlanApStart();
+void       sceNetConfigWlanApStart();
 // Empty Comment
-void sceNetConfigWlanApStop();
+void       sceNetConfigWlanApStop();
 // Empty Comment
-void sceNetConfigWlanBackgroundScanQuery();
+void       sceNetConfigWlanBackgroundScanQuery();
 // Empty Comment
-void sceNetConfigWlanBackgroundScanStart();
+void       sceNetConfigWlanBackgroundScanStart();
 // Empty Comment
-void sceNetConfigWlanBackgroundScanStop();
+void       sceNetConfigWlanBackgroundScanStop();
 // Empty Comment
-void sceNetConfigWlanDiagGetDeviceInfo();
+void       sceNetConfigWlanDiagGetDeviceInfo();
 // Empty Comment
-void sceNetConfigWlanDiagSetAntenna();
+void       sceNetConfigWlanDiagSetAntenna();
 // Empty Comment
-void sceNetConfigWlanGetDeviceConfig();
+void       sceNetConfigWlanGetDeviceConfig();
 // Empty Comment
-void sceNetConfigWlanInfraGetRssiInfo();
+void       sceNetConfigWlanInfraGetRssiInfo();
 // Empty Comment
-void sceNetConfigWlanInfraLeave();
+void       sceNetConfigWlanInfraLeave();
 // Empty Comment
-void sceNetConfigWlanInfraScanJoin();
+void       sceNetConfigWlanInfraScanJoin();
 // Empty Comment
-void sceNetConfigWlanScan();
+void       sceNetConfigWlanScan();
 // Empty Comment
-void sceNetConfigWlanSetDeviceConfig();
+void       sceNetConfigWlanSetDeviceConfig();
 // Empty Comment
-int sceNetConnect(OrbisNetId, const OrbisNetSockaddr*, OrbisNetSocklen_t);
+int        sceNetConnect(OrbisNetId, const OrbisNetSockaddr *, OrbisNetSocklen_t);
 // Empty Comment
-void sceNetControl();
+void       sceNetControl();
 // Empty Comment
-void sceNetDhcpdStart();
+void       sceNetDhcpdStart();
 // Empty Comment
-void sceNetDhcpdStop();
+void       sceNetDhcpdStop();
 // Empty Comment
-void sceNetDhcpGetAutoipInfo();
+void       sceNetDhcpGetAutoipInfo();
 // Empty Comment
-void sceNetDhcpGetInfo();
+void       sceNetDhcpGetInfo();
 // Empty Comment
-void sceNetDhcpGetInfoEx();
+void       sceNetDhcpGetInfoEx();
 // Empty Comment
-void sceNetDhcpStart();
+void       sceNetDhcpStart();
 // Empty Comment
-void sceNetDhcpStop();
+void       sceNetDhcpStop();
 // Empty Comment
-void sceNetDumpAbort();
+void       sceNetDumpAbort();
 // Empty Comment
-void sceNetDumpCreate();
+void       sceNetDumpCreate();
 // Empty Comment
-void sceNetDumpDestroy();
+void       sceNetDumpDestroy();
 // Empty Comment
-void sceNetDumpRead();
+void       sceNetDumpRead();
 // Empty Comment
-void sceNetDuplicateIpStart();
+void       sceNetDuplicateIpStart();
 // Empty Comment
-void sceNetEpollAbort();
+void       sceNetEpollAbort();
 // Empty Comment
-void sceNetEpollControl();
+void       sceNetEpollControl();
 // Empty Comment
-void sceNetEpollCreate();
+void       sceNetEpollCreate();
 // Empty Comment
-void sceNetEpollDestroy();
+void       sceNetEpollDestroy();
 // Empty Comment
-void sceNetEpollWait();
+void       sceNetEpollWait();
 // TODO: pr
-int sceNetErrnoLoc();
+int        sceNetErrnoLoc();
 // Empty Comment
-void sceNetEtherNtostr();
+void       sceNetEtherNtostr();
 // Empty Comment
-void sceNetEtherStrton();
+void       sceNetEtherStrton();
 // Empty Comment
-void sceNetEventCallbackCreate();
+void       sceNetEventCallbackCreate();
 // Empty Comment
-void sceNetEventCallbackDestroy();
+void       sceNetEventCallbackDestroy();
 // Empty Comment
-void sceNetEventCallbackGetError();
+void       sceNetEventCallbackGetError();
 // Empty Comment
-void sceNetEventCallbackWaitCB();
+void       sceNetEventCallbackWaitCB();
 // Empty Comment
-void sceNetFreeAllRouteInfo();
+void       sceNetFreeAllRouteInfo();
 // Empty Comment
-void sceNetGetArpInfo();
+void       sceNetGetArpInfo();
 // Empty Comment
-int sceNetGetDnsInfo(OrbisNetDnsInfo* info, int flags);
+int        sceNetGetDnsInfo(OrbisNetDnsInfo *info, int flags);
 // Empty Comment
-void sceNetGetIfList();
+void       sceNetGetIfList();
 // Empty Comment
-void sceNetGetIfListOnce();
+void       sceNetGetIfListOnce();
 // Empty Comment
-void sceNetGetIfName();
+void       sceNetGetIfName();
 // Empty Comment
-void sceNetGetIfnameNumList();
+void       sceNetGetIfnameNumList();
 // Empty Comment
-void sceNetGetMacAddress();
+void       sceNetGetMacAddress();
 // Empty Comment
-void sceNetGetMemoryPoolStats();
+void       sceNetGetMemoryPoolStats();
 // Empty Comment
-void sceNetGetNameToIndex();
+void       sceNetGetNameToIndex();
 // Empty Comment
-int sceNetGetpeername(OrbisNetId, OrbisNetSockaddr*, OrbisNetSocklen_t*);
+int        sceNetGetpeername(OrbisNetId, OrbisNetSockaddr *, OrbisNetSocklen_t *);
 // Empty Comment
-void sceNetGetRandom();
+void       sceNetGetRandom();
 // Empty Comment
-void sceNetGetRouteInfo();
+void       sceNetGetRouteInfo();
 // Empty Comment
-void sceNetGetSockInfo();
+void       sceNetGetSockInfo();
 // Empty Comment
-void sceNetGetSockInfo6();
+void       sceNetGetSockInfo6();
 // Empty Comment
-int sceNetGetsockname(OrbisNetId, OrbisNetSockaddr*, OrbisNetSocklen_t*);
+int        sceNetGetsockname(OrbisNetId, OrbisNetSockaddr *, OrbisNetSocklen_t *);
 // Empty Comment
-int sceNetGetsockopt(OrbisNetId, int, int, void*, OrbisNetSocklen_t*);
+int        sceNetGetsockopt(OrbisNetId, int, int, void *, OrbisNetSocklen_t *);
 // Empty Comment
-void sceNetGetStatisticsInfo();
+void       sceNetGetStatisticsInfo();
 // Empty Comment
-void sceNetGetSystemTime();
+void       sceNetGetSystemTime();
 // Empty Comment
-uint32_t sceNetHtonl(uint32_t);
+uint32_t   sceNetHtonl(uint32_t);
 // Empty Comment
-uint64_t sceNetHtonll(uint64_t);
+uint64_t   sceNetHtonll(uint64_t);
 // Empty Comment
-uint16_t sceNetHtons(uint16_t);
+uint16_t   sceNetHtons(uint16_t);
 // Empty Comment
-void sceNetInetNtop();
+void       sceNetInetNtop();
 // Empty Comment
-int sceNetInetPton(int, const char*, void*);
+int        sceNetInetPton(int, const char *, void *);
 // Empty Comment
-void sceNetInetPtonEx();
+void       sceNetInetPtonEx();
 // Empty Comment
-int sceNetInit();
+int        sceNetInit();
 // Empty Comment
-void sceNetIoctl();
+void       sceNetIoctl();
 // Empty Comment
-int sceNetListen(OrbisNetId, int);
+int        sceNetListen(OrbisNetId, int);
 // Empty Comment
-void sceNetMemoryAllocate();
+void       sceNetMemoryAllocate();
 // Empty Comment
-void sceNetMemoryFree();
+void       sceNetMemoryFree();
 // Empty Comment
-uint32_t sceNetNtohl(uint32_t);
+uint32_t   sceNetNtohl(uint32_t);
 // Empty Comment
-uint64_t sceNetNtohll(uint64_t);
+uint64_t   sceNetNtohll(uint64_t);
 // Empty Comment
-uint16_t sceNetNtohs(uint16_t);
+uint16_t   sceNetNtohs(uint16_t);
 // Empty Comment
-int sceNetPoolCreate(const char *name, int size, int flags);
+int        sceNetPoolCreate(const char *name, int size, int flags);
 // TODO: pr
-int sceNetPoolDestroy();
+int        sceNetPoolDestroy();
 // Empty Comment
-void sceNetPppoeStart();
+void       sceNetPppoeStart();
 // Empty Comment
-void sceNetPppoeStop();
+void       sceNetPppoeStop();
 // Empty Comment
-int sceNetRecv(OrbisNetId, void*, size_t, int);
+int        sceNetRecv(OrbisNetId, void *, size_t, int);
 // Empty Comment
-int sceNetRecvfrom(OrbisNetId, void*, size_t, int, OrbisNetSockaddr*, OrbisNetSocklen_t*);
+int        sceNetRecvfrom(OrbisNetId, void *, size_t, int, OrbisNetSockaddr *, OrbisNetSocklen_t *);
 // Empty Comment
-int sceNetRecvmsg(OrbisNetId, OrbisNetMsghdr*, int);
+int        sceNetRecvmsg(OrbisNetId, OrbisNetMsghdr *, int);
 // Empty Comment
-void sceNetResolverAbort();
+void       sceNetResolverAbort();
 // Empty Comment
-void sceNetResolverCreate();
+void       sceNetResolverCreate();
 // Empty Comment
-void sceNetResolverDestroy();
+void       sceNetResolverDestroy();
 // Empty Comment
-void sceNetResolverGetError();
+void       sceNetResolverGetError();
 // Empty Comment
-void sceNetResolverStartAton();
+void       sceNetResolverStartAton();
 // Empty Comment
-void sceNetResolverStartAton6();
+void       sceNetResolverStartAton6();
 // Empty Comment
-void sceNetResolverStartNtoa();
+void       sceNetResolverStartNtoa();
 // Empty Comment
-void sceNetResolverStartNtoa6();
+void       sceNetResolverStartNtoa6();
 // Empty Comment
-void sceNetResolverStartNtoaMultipleRecords();
+void       sceNetResolverStartNtoaMultipleRecords();
 // Empty Comment
-void sceNetResolverStartNtoaMultipleRecordsEx();
+void       sceNetResolverStartNtoaMultipleRecordsEx();
 // Empty Comment
-int sceNetSend(OrbisNetId, const void*, size_t, int);
+int        sceNetSend(OrbisNetId, const void *, size_t, int);
 // Empty Comment
-int sceNetSendmsg(OrbisNetId, const OrbisNetMsghdr*, int);
+int        sceNetSendmsg(OrbisNetId, const OrbisNetMsghdr *, int);
 // Empty Comment
-int sceNetSendto(OrbisNetId, const void*, size_t, int, const OrbisNetSockaddr*, OrbisNetSocklen_t);
+int        sceNetSendto(OrbisNetId, const void *, size_t, int, const OrbisNetSockaddr *, OrbisNetSocklen_t);
 // Empty Comment
-void sceNetSetDnsInfo();
+void       sceNetSetDnsInfo();
 // Empty Comment
-void sceNetSetDnsInfoToKernel();
+void       sceNetSetDnsInfoToKernel();
 // Empty Comment
-int sceNetSetsockopt(OrbisNetId, int, int, const void*, OrbisNetSocklen_t);
+int        sceNetSetsockopt(OrbisNetId, int, int, const void *, OrbisNetSocklen_t);
 // Empty Comment
-void sceNetShowIfconfig();
+void       sceNetShowIfconfig();
 // Empty Comment
-void sceNetShowIfconfigWithMemory();
+void       sceNetShowIfconfigWithMemory();
 // Empty Comment
-void sceNetShowNetstat();
+void       sceNetShowNetstat();
 // Empty Comment
-void sceNetShowNetstatWithMemory();
+void       sceNetShowNetstatWithMemory();
 // Empty Comment
-void sceNetShowPolicy();
+void       sceNetShowPolicy();
 // Empty Comment
-void sceNetShowPolicyWithMemory();
+void       sceNetShowPolicyWithMemory();
 // Empty Comment
-void sceNetShowRoute();
+void       sceNetShowRoute();
 // Empty Comment
-void sceNetShowRoute6();
+void       sceNetShowRoute6();
 // Empty Comment
-void sceNetShowRouteWithMemory();
+void       sceNetShowRouteWithMemory();
 // Empty Comment
-int sceNetShutdown(OrbisNetId, int);
+int        sceNetShutdown(OrbisNetId, int);
 // Empty Comment
 OrbisNetId sceNetSocket(const char *, int, int, int);
 // Empty Comment
-int sceNetSocketAbort(OrbisNetId, int);
+int        sceNetSocketAbort(OrbisNetId, int);
 // Empty Comment
-int sceNetSocketClose(OrbisNetId);
+int        sceNetSocketClose(OrbisNetId);
 // Empty Comment
-void sceNetSyncCreate();
+void       sceNetSyncCreate();
 // Empty Comment
-void sceNetSyncDestroy();
+void       sceNetSyncDestroy();
 // Empty Comment
-void sceNetSyncGet();
+void       sceNetSyncGet();
 // Empty Comment
-void sceNetSyncSignal();
+void       sceNetSyncSignal();
 // Empty Comment
-void sceNetSyncWait();
+void       sceNetSyncWait();
 // Empty Comment
-void sceNetSysctl();
+void       sceNetSysctl();
 // TODO: pr
-int sceNetTerm();
+int        sceNetTerm();
 // Empty Comment
-void sceNetThreadCreate();
+void       sceNetThreadCreate();
 // Empty Comment
-void sceNetThreadExit();
+void       sceNetThreadExit();
 // Empty Comment
-void sceNetThreadJoin();
+void       sceNetThreadJoin();
 // Empty Comment
-void sceNetUsleep();
+void       sceNetUsleep();
 
 bool net_init(void);
 bool net_is_initialized(void);
-int net_get_mem_id(void);
+int  net_get_mem_id(void);
 void net_fini(void);
 
-int net_get_ipv4(char* buf, size_t buf_size);
+int net_get_ipv4(char *buf, size_t buf_size);
 
-int net_send_all(int sock_id, const void* data, size_t size, size_t* sent);
-int net_recv_all(int sock_id, void* data, size_t size, size_t* received);
+int net_send_all(int sock_id, const void *data, size_t size, size_t *sent);
+int net_recv_all(int sock_id, void *data, size_t size, size_t *received);
