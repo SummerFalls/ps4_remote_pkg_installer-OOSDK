@@ -48,6 +48,7 @@ static bool s_server_started   = false;
 
 static int event_handler(sb_Event *e);
 
+static bool handle_api_install_by_baidu_netdisk(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
 static bool handle_api_install(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
 static bool handle_api_uninstall_game(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
 static bool handle_api_uninstall_ac(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
@@ -75,35 +76,37 @@ static void cleanup_temp_files(void);
 static char *encodeURI(char *src);
 
 static const struct handler_desc s_get_handlers[] = {
-    {"/static/",                &handle_static,                true },
-    { "/api/install",           &handle_api_install,           false},
-    { "/api/uninstall_game",    &handle_api_uninstall_game,    false},
-    { "/api/uninstall_ac",      &handle_api_uninstall_ac,      false},
-    { "/api/uninstall_patch",   &handle_api_uninstall_patch,   false},
-    { "/api/uninstall_theme",   &handle_api_uninstall_theme,   false},
-    { "/api/is_exists",         &handle_api_is_exists,         false},
-    { "/api/start_task",        &handle_api_start_task,        false},
-    { "/api/stop_task",         &handle_api_stop_task,         false},
-    { "/api/pause_task",        &handle_api_pause_task,        false},
-    { "/api/resume_task",       &handle_api_resume_task,       false},
-    { "/api/unregister_task",   &handle_api_unregister_task,   false},
-    { "/api/get_task_progress", &handle_api_get_task_progress, false},
-    { "/api/find_task",         &handle_api_find_task,         false},
+    {"/static/",                       &handle_static,                       true },
+    { "/api/install_by_baidu_netdisk", &handle_api_install_by_baidu_netdisk, false},
+    { "/api/install",                  &handle_api_install,                  false},
+    { "/api/uninstall_game",           &handle_api_uninstall_game,           false},
+    { "/api/uninstall_ac",             &handle_api_uninstall_ac,             false},
+    { "/api/uninstall_patch",          &handle_api_uninstall_patch,          false},
+    { "/api/uninstall_theme",          &handle_api_uninstall_theme,          false},
+    { "/api/is_exists",                &handle_api_is_exists,                false},
+    { "/api/start_task",               &handle_api_start_task,               false},
+    { "/api/stop_task",                &handle_api_stop_task,                false},
+    { "/api/pause_task",               &handle_api_pause_task,               false},
+    { "/api/resume_task",              &handle_api_resume_task,              false},
+    { "/api/unregister_task",          &handle_api_unregister_task,          false},
+    { "/api/get_task_progress",        &handle_api_get_task_progress,        false},
+    { "/api/find_task",                &handle_api_find_task,                false},
 };
 static const struct handler_desc s_post_handlers[] = {
-    {"/api/install",            &handle_api_install,           false},
-    { "/api/uninstall_game",    &handle_api_uninstall_game,    false},
-    { "/api/uninstall_ac",      &handle_api_uninstall_ac,      false},
-    { "/api/uninstall_patch",   &handle_api_uninstall_patch,   false},
-    { "/api/uninstall_theme",   &handle_api_uninstall_theme,   false},
-    { "/api/is_exists",         &handle_api_is_exists,         false},
-    { "/api/start_task",        &handle_api_start_task,        false},
-    { "/api/stop_task",         &handle_api_stop_task,         false},
-    { "/api/pause_task",        &handle_api_pause_task,        false},
-    { "/api/resume_task",       &handle_api_resume_task,       false},
-    { "/api/unregister_task",   &handle_api_unregister_task,   false},
-    { "/api/get_task_progress", &handle_api_get_task_progress, false},
-    { "/api/find_task",         &handle_api_find_task,         false},
+    {"/api/install_by_baidu_netdisk", &handle_api_install_by_baidu_netdisk, false},
+    { "/api/install",                 &handle_api_install,                  false},
+    { "/api/uninstall_game",          &handle_api_uninstall_game,           false},
+    { "/api/uninstall_ac",            &handle_api_uninstall_ac,             false},
+    { "/api/uninstall_patch",         &handle_api_uninstall_patch,          false},
+    { "/api/uninstall_theme",         &handle_api_uninstall_theme,          false},
+    { "/api/is_exists",               &handle_api_is_exists,                false},
+    { "/api/start_task",              &handle_api_start_task,               false},
+    { "/api/stop_task",               &handle_api_stop_task,                false},
+    { "/api/pause_task",              &handle_api_pause_task,               false},
+    { "/api/resume_task",             &handle_api_resume_task,              false},
+    { "/api/unregister_task",         &handle_api_unregister_task,          false},
+    { "/api/get_task_progress",       &handle_api_get_task_progress,        false},
+    { "/api/find_task",               &handle_api_find_task,                false},
 };
 
 bool server_start(const char *ip_address, int port, const char *work_dir)
@@ -772,6 +775,73 @@ err:
     {
         for (i = 0; i < piece_count; ++i) { free(piece_urls[i]); }
         free(piece_urls);
+    }
+
+    return false;
+}
+
+/* TODO 尚未完成 handle_api_install_by_baidu_netdisk */
+static bool handle_api_install_by_baidu_netdisk(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size)
+{
+    static json_t     *pool      = NULL;
+    const size_t       pool_size = 256;
+    const json_t      *root;
+    const json_t      *field;
+    union json_value_t val;
+    bool               status;
+
+    assert(s != NULL);
+    assert(method != NULL);
+    assert(path != NULL);
+    assert(in_data != NULL);
+
+    pool = (json_t *)malloc(sizeof(*pool) * pool_size);
+    if (!pool)
+    {
+        THROW_ERROR("No memory.");
+    }
+    memset(pool, 0, sizeof(*pool) * pool_size);
+
+    root = json_create(in_data, pool, pool_size);
+    if (!root)
+    {
+        THROW_ERROR("Invalid JSON format.");
+    }
+
+    field = json_getProperty(root, "type");
+    if (!field)
+    {
+        THROW_ERROR("No '%s' parameter specified.", "type");
+    }
+    if (json_getType(field) != JSON_TEXT)
+    {
+        THROW_ERROR("Invalid type for parameter '%s'.", "type");
+    }
+    val.sval = json_getValue(field);
+    if (strcasecmp(val.sval, "direct") == 0)
+    {
+        status = handle_api_install_direct(s, root);
+    }
+    else if (strcasecmp(val.sval, "ref_pkg_url") == 0)
+    {
+        status = handle_api_install_ref_pkg_url(s, root);
+    }
+    else
+    {
+        THROW_ERROR("Invalid type '%s'.", val.sval);
+    }
+
+    if (pool)
+    {
+        free(pool);
+    }
+
+    return status;
+
+err:
+    if (pool)
+    {
+        free(pool);
     }
 
     return false;
