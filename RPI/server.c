@@ -1954,9 +1954,10 @@ static void cleanup_temp_files(void)
                         goto err;
                     }
 
-                    if (timespec_compare(&now, &stat_buf.st_atime) >= 0)
+                    /* FIXME: is a bug? Change &stat_buf.st_atime --to--> &stat_buf.st_atim */
+                    if (timespec_compare(&now, &stat_buf.st_atim) >= 0)
                     {
-                        timespec_sub(&diff, &now, &stat_buf.st_atime);
+                        timespec_sub(&diff, &now, &stat_buf.st_atim);
 
                         if (diff.tv_sec >= (long)CLEANUP_DAY_COUNT * 24 * 60 * 60)
                         {
@@ -1990,7 +1991,10 @@ char to_hex(char code)
 
 char *encodeURI(char *str)
 {
-    char *pstr = str, *buf = malloc(strlen(str) * 3 + 1), *pbuf = buf;
+    char *pstr = str;
+    char *buf  = (char *)malloc(strlen(str) * 3 + 1);
+    char *pbuf = buf;
+
     while (*pstr)
     {
         if (isalnum(*pstr) || *pstr == '-' || *pstr == '_' || *pstr == '.' || *pstr == '~' || *pstr == '+' || *pstr == ':' || *pstr == '/' || *pstr == '@')
