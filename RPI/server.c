@@ -31,12 +31,13 @@ union json_value_t
     int64_t       ival;
 };
 
-#define THROW_ERROR(format, ...)                                   \
-    do {                                                           \
-        char tmp_buf[256];                                         \
-        snprintf(tmp_buf, sizeof(tmp_buf), format, ##__VA_ARGS__); \
-        kick_error(s, 500, "Internal server error", tmp_buf);      \
-        goto err;                                                  \
+#define THROW_ERROR(format, ...)                                                                \
+    do {                                                                                        \
+        char tmp_buf[256];                                                                      \
+        snprintf(tmp_buf, sizeof(tmp_buf), format, ##__VA_ARGS__);                              \
+        kick_error(s, 500, "Internal server error", tmp_buf);                                   \
+        Notify("Error at %s:%s(%d): " format, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__); \
+        goto err;                                                                               \
     } while (0)
 
 static sb_Server *s_server     = NULL;
