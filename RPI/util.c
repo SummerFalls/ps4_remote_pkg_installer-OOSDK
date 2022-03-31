@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <fcntl.h>
 #include <orbis/libkernel.h>
-#include <orbis/systemservice.h>
+#include <orbis/SystemService.h>
 
 bool get_language_id(int *lang_id)
 {

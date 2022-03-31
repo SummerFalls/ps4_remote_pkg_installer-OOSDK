@@ -4,9 +4,9 @@
 #include "pkg.h"
 #include "util.h"
 #include <orbis/AppInstUtil.h>
-#include <orbis/bgft.h>
+#include <orbis/Bgft.h>
 #include <orbis/libkernel.h>
-#include <orbis/userservice.h>
+#include <orbis/UserService.h>
 #include <sys/param.h>
 
 #define _NDBG

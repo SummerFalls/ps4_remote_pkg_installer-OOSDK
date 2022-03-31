@@ -8,7 +8,7 @@
 #include <orbis/Sysmodule.h>
 #include <orbis/SystemService.h>
 #include <orbis/libkernel.h>
-#include <orbis/userservice.h>
+#include <orbis/UserService.h>
 
 #define SERVER_PORT (12801)
 
@@ -69,7 +69,7 @@ void Jailbreak()
 {
     // unjail
     int     urmom     = 0;
-    int32_t handlejbc = sceKernelLoadStartModule("/app0/sce_module/libjbc.prx", NULL, NULL, NULL, NULL, NULL);
+    int32_t handlejbc = sceKernelLoadStartModule("/app0/sce_module/libjbc.prx", 0, NULL, 0, NULL, NULL);
     KernelPrintOut("libjbc handle is 0x%lx\n", handlejbc);
 
     if (handlejbc > 0)
