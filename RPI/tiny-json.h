@@ -35,8 +35,11 @@ extern "C" {
 #endif
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+#define json_containerOf(ptr, type, member) ((type *)((char *)ptr - offsetof(type, member)))
 
 /** @defgroup tinyJson Tiny JSON parser.
  * @{ */
@@ -90,7 +93,7 @@ static inline char const *json_getName(json_t const *json)
 
 /** Get the value of a json property.
  * The type of property cannot be JSON_OBJ or JSON_ARRAY.
- * @param json A valid handler of a json property.
+ * @param property A valid handler of a json property.
  * @return Pointer to null-terminated string with the value. */
 static inline char const *json_getValue(json_t const *property)
 {
@@ -120,6 +123,7 @@ static inline json_t const *json_getSibling(json_t const *json)
  * @retval The handler of the json property if found.
  * @retval Null pointer if not found. */
 json_t const *json_getProperty(json_t const *obj, char const *property);
+
 
 /** Search a property by its name in a JSON object and return its value.
  * @param obj A valid handler of a json object. Its type must be JSON_OBJ.
@@ -151,7 +155,7 @@ static inline bool json_getBoolean(json_t const *property)
  * @return The value stdint. */
 static inline int64_t json_getInteger(json_t const *property)
 {
-    return (int64_t)atoll(property->u.value);
+    return strtoll(property->u.value, (char **)NULL, 10);
 }
 
 /** Get the value of a json real property.
@@ -159,8 +163,25 @@ static inline int64_t json_getInteger(json_t const *property)
  * @return The value. */
 static inline double json_getReal(json_t const *property)
 {
-    return atof(property->u.value);
+    return strtod(property->u.value, (char **)NULL);
 }
+
+
+/** Structure to handle a heap of JSON properties. */
+typedef struct jsonPool_s jsonPool_t;
+struct jsonPool_s
+{
+    json_t *(*init)(jsonPool_t *pool);
+    json_t *(*alloc)(jsonPool_t *pool);
+};
+
+/** Parse a string to get a json.
+ * @param str String pointer with a JSON object. It will be modified.
+ * @param pool Custom json pool pointer.
+ * @retval Null pointer if any was wrong in the parse process.
+ * @retval If the parser process was successfully a valid handler of a json.
+ *         This property is always unnamed and its type is JSON_OBJ. */
+json_t const *json_createWithPool(char *str, jsonPool_t *pool);
 
 /** @ } */
 
