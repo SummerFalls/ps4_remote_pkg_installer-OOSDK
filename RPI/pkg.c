@@ -260,6 +260,7 @@ err:
         if (error_buf)                                                  \
             snprintf(error_buf, error_buf_size, format, ##__VA_ARGS__); \
         EPRINTF(format, ##__VA_ARGS__);                                 \
+        Notify("Error at %s:%s(%d): " format, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__); \
     } while (0)
 
 bool pkg_setup_prerequisites(char                 **piece_urls,

@@ -49,7 +49,6 @@ static bool s_server_started   = false;
 
 static int event_handler(sb_Event *e);
 
-static bool handle_api_install_by_baidu_netdisk(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
 static bool handle_api_install(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
 static bool handle_api_uninstall_game(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
 static bool handle_api_uninstall_ac(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size);
@@ -78,7 +77,6 @@ static char *encodeURI(char *src);
 
 static const struct handler_desc s_get_handlers[] = {
     {"/static/",                       &handle_static,                       true },
-    { "/api/install_by_baidu_netdisk", &handle_api_install_by_baidu_netdisk, false},
     { "/api/install",                  &handle_api_install,                  false},
     { "/api/uninstall_game",           &handle_api_uninstall_game,           false},
     { "/api/uninstall_ac",             &handle_api_uninstall_ac,             false},
@@ -94,7 +92,6 @@ static const struct handler_desc s_get_handlers[] = {
     { "/api/find_task",                &handle_api_find_task,                false},
 };
 static const struct handler_desc s_post_handlers[] = {
-    {"/api/install_by_baidu_netdisk", &handle_api_install_by_baidu_netdisk, false},
     { "/api/install",                 &handle_api_install,                  false},
     { "/api/uninstall_game",          &handle_api_uninstall_game,           false},
     { "/api/uninstall_ac",            &handle_api_uninstall_ac,             false},
@@ -776,73 +773,6 @@ err:
     {
         for (i = 0; i < piece_count; ++i) { free(piece_urls[i]); }
         free(piece_urls);
-    }
-
-    return false;
-}
-
-/* TODO 尚未完成 handle_api_install_by_baidu_netdisk */
-static bool handle_api_install_by_baidu_netdisk(sb_Stream *s, const char *method, const char *path, char *in_data, size_t in_size)
-{
-    static json_t     *pool      = NULL;
-    const size_t       pool_size = 256;
-    const json_t      *root;
-    const json_t      *field;
-    union json_value_t val;
-    bool               status;
-
-    assert(s != NULL);
-    assert(method != NULL);
-    assert(path != NULL);
-    assert(in_data != NULL);
-
-    pool = (json_t *)malloc(sizeof(*pool) * pool_size);
-    if (!pool)
-    {
-        THROW_ERROR("No memory.");
-    }
-    memset(pool, 0, sizeof(*pool) * pool_size);
-
-    root = json_create(in_data, pool, pool_size);
-    if (!root)
-    {
-        THROW_ERROR("Invalid JSON format.");
-    }
-
-    field = json_getProperty(root, "type");
-    if (!field)
-    {
-        THROW_ERROR("No '%s' parameter specified.", "type");
-    }
-    if (json_getType(field) != JSON_TEXT)
-    {
-        THROW_ERROR("Invalid type for parameter '%s'.", "type");
-    }
-    val.sval = json_getValue(field);
-    if (strcasecmp(val.sval, "direct") == 0)
-    {
-        status = handle_api_install_direct(s, root);
-    }
-    else if (strcasecmp(val.sval, "ref_pkg_url") == 0)
-    {
-        status = handle_api_install_ref_pkg_url(s, root);
-    }
-    else
-    {
-        THROW_ERROR("Invalid type '%s'.", val.sval);
-    }
-
-    if (pool)
-    {
-        free(pool);
-    }
-
-    return status;
-
-err:
-    if (pool)
-    {
-        free(pool);
     }
 
     return false;

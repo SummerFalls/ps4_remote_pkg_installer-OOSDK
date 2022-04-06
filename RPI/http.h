@@ -3,10 +3,6 @@
 #include "common.h"
 #include <orbis/_types/http.h>
 
-typedef int (*SceHttpCookieRecvCallback)(int request, const char *url, const char *cookieHeader, unsigned int headerLen, void *userArg);
-
-typedef int (*SceHttpCookieSendCallback)(int request, const char *url, const char *cookieHeader, void *userArg);
-
 // Empty Comment
 int  sceHttpAbortRequest(int reqId);
 // Empty Comment
@@ -14,7 +10,7 @@ void sceHttpAbortRequestForce();
 // Empty Comment
 void sceHttpAbortWaitRequest();
 // Empty Comment
-int  sceHttpAddCookie(const char *url, const char *cookie, unsigned int cookieLength);
+void sceHttpAddCookie();
 // Empty Comment
 int  sceHttpAddRequestHeader(int id, const char *name, const char *value, int mode);
 // Empty Comment
@@ -78,9 +74,9 @@ int  sceHttpGetAuthEnabled(int id, int *isEnable);
 // Empty Comment
 int  sceHttpGetAutoRedirect(int id, int *isEnable);
 // Empty Comment
-int  sceHttpGetCookie(const char *url, char *cookie, unsigned int *cookieLength, unsigned int prepare, int secure);
+void sceHttpGetCookie();
 // Empty Comment
-int  sceHttpGetCookieEnabled(int id, int *enable);
+void sceHttpGetCookieEnabled();
 // Empty Comment
 void sceHttpGetCookieStats();
 // Empty Comment
@@ -134,7 +130,7 @@ void sceHttpSetChunkedTransferEnabled();
 // Empty Comment
 int  sceHttpSetConnectTimeOut(int id, unsigned int usec);
 // Empty Comment
-int  sceHttpSetCookieEnabled(int id, int enable);
+void sceHttpSetCookieEnabled();
 // Empty Comment
 void sceHttpSetCookieMaxNum();
 // Empty Comment
@@ -142,9 +138,9 @@ void sceHttpSetCookieMaxNumPerDomain();
 // Empty Comment
 void sceHttpSetCookieMaxSize();
 // Empty Comment
-int  sceHttpSetCookieRecvCallback(int id, SceHttpCookieRecvCallback cbfunc, void *userArg);
+void sceHttpSetCookieRecvCallback();
 // Empty Comment
-int  sceHttpSetCookieSendCallback(int id, SceHttpCookieSendCallback cbfunc, void *userArg);
+void sceHttpSetCookieSendCallback();
 // Empty Comment
 void sceHttpSetCookieTotalMaxSize();
 // Empty Comment

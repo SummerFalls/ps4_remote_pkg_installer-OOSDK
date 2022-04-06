@@ -122,6 +122,7 @@ int main(int argc, const char *const argv[])
 
     work_dir = "/data";
     // printf("Working directory: %s\n", work_dir);
+    Notify("Working directory: %s", work_dir);
 
     // printf("Initializing AppInstUtil...\n");
     if (!app_inst_util_init())
@@ -166,7 +167,7 @@ int main(int argc, const char *const argv[])
     }
 
     printf("Listening for incoming connections on %s:%d...\n", ip_address, SERVER_PORT);
-    Notify("RPI\nIP: %s\nPort: %i", ip_address, SERVER_PORT);
+    Notify("RPI\nIP: %s\nPort: %d", ip_address, SERVER_PORT);
     if (!server_listen())
     {
         goto err_server_stop;
